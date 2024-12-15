@@ -1,14 +1,7 @@
-// src/pages/Contact.jsx
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
-import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 
 const Contact = () => {
-  // Google Maps API Key et configuration de carte
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'VOTRE_API_KEY_GOOGLE_MAPS', // Remplacez par votre propre clé API
-  });
-
   // State pour gérer le formulaire de contact
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,9 +35,6 @@ const Contact = () => {
     setEmail('');
     setMessage('');
   };
-
-  // Coordonnées de l'entreprise
-  const companyLocation = { lat: 33.8869, lng: 9.5375 }; // Coordonnées de Tunis (vous pouvez remplacer par vos propres coordonnées)
 
   return (
     <div className="contact-background">
@@ -151,19 +141,6 @@ const Contact = () => {
             <p>
               <strong>Téléphone :</strong> +216 93 609 704
             </p>
-
-            {/* Affichage de la carte */}
-            {isLoaded ? (
-              <GoogleMap
-                mapContainerStyle={{ width: '100%', height: '400px' }}
-                zoom={15}
-                center={companyLocation}
-              >
-                <Marker position={companyLocation} />
-              </GoogleMap>
-            ) : (
-              <div>Chargement de la carte...</div>
-            )}
           </Col>
         </Row>
       </Container>
